@@ -1,0 +1,26 @@
+:root {
+  --white: rgb(255, 255, 255);
+  --gray: rgb(100, 100, 100);
+  --black: rgb(0, 0, 0);
+
+  --main: var(--white);
+  --second: var(--gray);
+}
+
+body {
+  background-color: rgb(187, 0, 0);
+}
+
+.tabs {
+  background-color: rgb(228, 79, 79);
+  padding: 5px, 50px;
+}
+
+#current-tab {
+  background-color: var(--main);
+}
+
+#background-tab {
+  background-color: var(--second);
+  border: 5px, dotted, white;
+}
