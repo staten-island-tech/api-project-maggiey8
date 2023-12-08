@@ -6,7 +6,8 @@ function getColors() {
     let main = 'rgb value here (from the sprite) (how do i read the rgb from the sprite'
 }
 
-let URL = `https://pokeapi.co/api/v2/pokemon-species/${DOMSelectors.input.value}`
+let URL = `https://pokeapi.co/api/v2/pokemon/ditto`
+// /${DOMSelectors.input.value}
 
 async function getData(URL) {
     try {
@@ -22,17 +23,23 @@ async function getData(URL) {
 }
 
 
-DOMSelectors.submit.addEventListener("click", function(event) {
-    event.preventDefault();
-    console.log(URL)
-    getData(URL);
-}
-)
-
-async function PLEASEWORK(URL) {
+async function inject(URL) {
+    try {
     let response = await fetch(URL);
     let data = await response.json();
-    console.log(data);
-}
+    console.log(data);       
+    document.querySelector('h1').insertAdjacentHTML(
+        'afterbegin', `<div><img src=${data.sprites.front_default} alt=""></div>`
+    )
+    } catch (error) {
+        console.log(error)
+    }  
+    }
+    
 
-PLEASEWORK(URL);
+DOMSelectors.submit.addEventListener("click", function(event) {
+    event.preventDefault();
+    console.log(URL);
+    inject(URL)
+}
+)
