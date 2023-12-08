@@ -6,7 +6,7 @@ function getColors() {
     let main = 'rgb value here (from the sprite) (how do i read the rgb from the sprite'
 }
 
-let URL = `pokeapi.co/api/v2/pokemon/${DOMSelectors.input.value}`
+let URL = `https://pokeapi.co/api/v2/pokemon-species/${DOMSelectors.input.value}`
 
 async function getData(URL) {
     try {
@@ -29,3 +29,10 @@ DOMSelectors.submit.addEventListener("click", function(event) {
 }
 )
 
+async function PLEASEWORK(URL) {
+    let response = await fetch(URL);
+    let data = await response.json();
+    console.log(data);
+}
+
+PLEASEWORK(URL);
