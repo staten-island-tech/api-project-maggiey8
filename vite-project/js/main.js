@@ -32,6 +32,7 @@ async function inject(URL, URL1) {
         DOMSelectors.input.value = ''
     }
 
+//how do i combine these 2 :(
 DOMSelectors.submit.addEventListener("click", function(event) {
     event.preventDefault();
     document.querySelector(".container").innerHTML = ""
@@ -45,15 +46,18 @@ DOMSelectors.input.addEventListener("keypress", function(event) {
         document.querySelector(".container").innerHTML = ""
         URLget()
         clearFields()
+    }
+    else {
+        DOMSelectors.input.style.backgroundColor = '#ffffff'
     } 
 }
 )
 
 DOMSelectors.input.addEventListener("click", function() {
-    DOMSelectors.input.value =''
-})
-
-
+    clearFields()
+    DOMSelectors.input.style.backgroundColor = '#ffffff'
+    }
+)
 
 document.getElementById('eyedropper').addEventListener('click', function() {
     const resultElement = document.getElementById('result');
@@ -64,5 +68,3 @@ document.getElementById('eyedropper').addEventListener('click', function() {
     resultElement.style.backgroundColor = result.sRGBHex;
 })
 })
-
-
