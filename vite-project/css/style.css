@@ -2,17 +2,57 @@
   --white: rgb(255, 255, 255);
   --gray: rgb(100, 100, 100);
   --black: rgb(0, 0, 0);
+}
 
-  --main: var(--white);
+.black {
+  --main: var(--black);
   --second: var(--gray);
+  --accent: var(--white);
+}
+
+.blue {
+
+}
+
+.brown {
+
+}
+
+.gray {
+
+}
+
+.green {
+
+}
+
+.pink {
+
+}
+
+.purple {
+
+}
+
+.red {
+
+}
+
+.white {
+
+}
+
+.yellow {
+
 }
 
 body {
-  background-color: rgb(187, 0, 0);
+  background-color: var(--main);
+  color: var(--accent);
 }
 
 .tabs {
-  background-color: rgb(228, 79, 79);
+  background-color: var(--accent);
   padding: 5px, 50px;
 }
 
@@ -24,3 +64,4 @@ body {
   background-color: var(--second);
   border: 5px, dotted, white;
 }
+

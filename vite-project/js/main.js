@@ -1,6 +1,22 @@
 import '../css/style.css'
 import {DOMSelectors} from './dom'
 
+function applyTheme(arr) {
+    let mainColor = arr.color.name
+    let current = document.body.classList
+    if (document.body.classList !== mainColor) {
+        document.body.classList.replace(current, mainColor)
+    }
+}
+
+function getRGB() { //help how do i use canvases
+    let img = document.getElementById('pokeimage')
+    let ctx = img.getContext('2d')
+    let rgb = ctx.getImageData(0, 0, img.width, img.height);
+    console.log(rgb)
+
+}
+
 async function inject(URL, URL1) {
     try {
     let response = await fetch(URL);
@@ -10,19 +26,20 @@ async function inject(URL, URL1) {
     console.log(data);
     console.log(data1)       
     document.querySelector('.container').insertAdjacentHTML(
-        'beforeend', `<div class="gallery"><img src=${data.sprites.front_default} alt=""><h2>${data1.color.name}</h2></div>`
+        'beforeend', `<div class="gallery"><img id='pokeimage' src=${data.sprites.front_default} alt=""><h2>${data1.color.name}</h2></div>`
     )
-    DOMSelectors.input.style.backgroundColor = '#ffffff'
+    applyTheme(data1)
+    getRGB()
     } catch (error) {
         console.log(error)
-        DOMSelectors.input.value = (error, "This Pokémon doesn't exist")
+        DOMSelectors.input.value = ("This Pokémon doesn't exist")
         DOMSelectors.input.style.backgroundColor = '#ee242c'
     }  
     }
     
     function URLget() {
     let URL = `https://pokeapi.co/api/v2/pokemon/${DOMSelectors.input.value.toLowerCase()}`
-    let URL1 = `https://pokeapi.co/api/v2/pokemon-species/${DOMSelectors.input.value.toLowerCase()}/`
+    let URL1 = `https://pokeapi.co/api/v2/pokemon-species/${DOMSelectors.input.value.toLowerCase()}`
     console.log(URL1)
     console.log(URL);
     inject(URL, URL1)
@@ -30,6 +47,7 @@ async function inject(URL, URL1) {
 
     function clearFields() {
         DOMSelectors.input.value = ''
+        DOMSelectors.input.style.backgroundColor = '#ffffff'
     }
 
 //how do i combine these 2 :(
@@ -55,7 +73,6 @@ DOMSelectors.input.addEventListener("keypress", function(event) {
 
 DOMSelectors.input.addEventListener("click", function() {
     clearFields()
-    DOMSelectors.input.style.backgroundColor = '#ffffff'
     }
 )
 
