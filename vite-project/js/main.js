@@ -9,12 +9,17 @@ function applyTheme(arr) {
     }
 }
 
-function getRGB() { //help how do i use canvases
-    let img = document.getElementById('pokeimage')
-    let ctx = img.getContext('2d')
+function getRGB(arr) { //help how do i use canvases
+    let canvas = document.getElementById('pokeimage')
+    let ctx = canvas.getContext('2d')
+    const img = new Image()
+    img.onload = () => {
+        ctx.drawImage(img, 10, 10)
+    }
+    img.src = `${arr.sprites.front_default}`
+    console.log(img.src)
     let rgb = ctx.getImageData(0, 0, img.width, img.height);
     console.log(rgb)
-
 }
 
 async function inject(URL, URL1) {
@@ -26,10 +31,10 @@ async function inject(URL, URL1) {
     console.log(data);
     console.log(data1)       
     document.querySelector('.container').insertAdjacentHTML(
-        'beforeend', `<div class="gallery"><img id='pokeimage' src=${data.sprites.front_default} alt=""><h2>${data1.color.name}</h2></div>`
+        'beforeend', `<div class="gallery"><canvas id='pokeimage'></canvas><h2>${data1.color.name}</h2></div>`
     )
     applyTheme(data1)
-    getRGB()
+    getRGB(data)
     } catch (error) {
         console.log(error)
         DOMSelectors.input.value = ("This Pokémon doesn't exist")
