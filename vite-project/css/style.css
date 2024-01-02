@@ -2,6 +2,8 @@
   --white: rgb(255, 255, 255);
   --gray: rgb(100, 100, 100);
   --black: rgb(0, 0, 0);
+  --blue: rgb(109, 170, 248);
+  --brown: rgb(245, 167, 79);
 }
 
 .black {
@@ -11,15 +13,15 @@
 }
 
 .blue {
-
+  --main:var(--blue)
 }
 
 .brown {
-
+  --main:var(--brown)
 }
 
 .gray {
-
+  --main:var(--gray)
 }
 
 .green {
@@ -65,3 +67,19 @@ body {
   border: 5px, dotted, white;
 }
 
+button {
+  height: 20px;
+  width: 30px;
+}
+
+#main {
+  background-color: var(--main);
+}
+
+#secondary {
+  background-color: var(--second);
+}
+
+#accent +{
+  background-color: var(--accent);
+}

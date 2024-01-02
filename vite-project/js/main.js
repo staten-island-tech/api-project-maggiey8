@@ -17,6 +17,7 @@ function getRGB(arr) { //help how do i use canvases
         ctx.drawImage(img, 10, 10)
     }
     img.src = `${arr.sprites.front_default}`
+    img.alt = `${arr.name???}`
     console.log(img.src)
     let rgb = ctx.getImageData(0, 0, img.width, img.height);
     console.log(rgb)
@@ -88,5 +89,14 @@ document.getElementById('eyedropper').addEventListener('click', function() {
     eyeDropper.open().then((result) => {
     resultElement.textContent = result.sRGBHex;
     resultElement.style.backgroundColor = result.sRGBHex;
+})
+})
+
+document.querySelectorAll('button').addEventListener('click', function(event) {
+    const eyeDropper = new EyeDropper();
+    let button = (event.target);
+    eyeDropper.open().then((result) => {
+    button.textContent = result.sRGBHex;
+    button.style.backgroundColor = result.sRGBHex;
 })
 })
