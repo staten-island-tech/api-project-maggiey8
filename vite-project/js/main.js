@@ -75,19 +75,32 @@ DOMSelectors.input.addEventListener("keypress", function(event) {
 }
 )
 
-/* DOMSelectors.input.addEventListener("click", function() {
+DOMSelectors.input.addEventListener("click", function() {
     clearFields()
     }
 )
- */
+
+function hexToRgb(hex) {
+    const r = parseInt(hex.slice(1, 3), 16);
+    const g = parseInt(hex.slice(3, 5), 16);
+    const b = parseInt(hex.slice(5, 7), 16);
+    return {r,g,b}
+}
+
+function invertColor(hex) {
+   const r = 255 - parseInt(hex.slice(1, 3), 16);
+   const g = 255 - parseInt(hex.slice(3, 5), 16);
+   const b = 255 - parseInt(hex.slice(5, 7), 16);
+   let inverted = {r, g, b}
+   return inverted
+}
 
 document.getElementById('main').addEventListener('click', function() {
     const eyeDropper = new EyeDropper();
     const button = document.getElementById('main')
     eyeDropper.open().then((result) => {
-    console.log(result)
     button.textContent = result.sRGBHex;
-    //button.style.color =  
+    button.style.color = `rgb(${invertColor(result.sRGBHex).r}, ${invertColor(result.sRGBHex).b}, ${invertColor(result.sRGBHex).g}`
     button.style.backgroundColor = result.sRGBHex;
 })
 })
@@ -96,8 +109,15 @@ document.getElementById('secondary').addEventListener('click', function() {
     const eyeDropper = new EyeDropper();
     const button = document.getElementById('secondary')
     eyeDropper.open().then((result) => {
-    button.textContent = result.sRGBHex;
+    button.textContent = result.sRGBHex;    
     button.style.backgroundColor = result.sRGBHex;
+    if ((hexToRgb(result.sRGBHex).r*0.299 + hexToRgb(result.sRGBHex).g*0.587 + hexToRgb(result.sRGBHex).b*0.114) < 186) {
+        button.style.color = '#ffffff'
+    }
+    else {
+        button.style.color = '#000000'
+    }
+
 })
 })
 

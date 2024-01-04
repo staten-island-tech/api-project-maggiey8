@@ -53,23 +53,13 @@ body {
   color: var(--accent);
 }
 
-.tabs {
-  background-color: var(--accent);
-  padding: 5px, 50px;
-}
-
-#current-tab {
-  background-color: var(--main);
-}
-
-#background-tab {
-  background-color: var(--second);
-  border: 5px, dotted, white;
-}
-
 button {
   height: 30px;
-  width: 50px;
+  width: 100px;
+}
+
+.color-button {
+  padding: 10px;
 }
 
 #main {
@@ -80,6 +70,6 @@ button {
   background-color: var(--second);
 }
 
-#accent +{
+#accent {
   background-color: var(--accent);
 }
