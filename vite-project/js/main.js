@@ -27,6 +27,9 @@ async function inject(URL, URL1) {
     try {
     let response = await fetch(URL);
     let data = await response.json();
+    if (data.sprites.front_default === null) {
+        DOMSelectors.input.value = ("No image available")
+    }
     let response1 = await fetch(URL1);
     let data1 = await response1.json();     
     document.querySelector('.container').insertAdjacentHTML(
@@ -42,8 +45,12 @@ async function inject(URL, URL1) {
     }
     
     function URLget() {
-    let URL = `https://pokeapi.co/api/v2/pokemon/${DOMSelectors.input.value.toLowerCase()}`
-    let URL1 = `https://pokeapi.co/api/v2/pokemon-species/${DOMSelectors.input.value.toLowerCase()}`
+    const pokemonInput = DOMSelectors.input.value.toLowerCase()
+    if (pokemonInput.includes(' ')) {
+        let pokemonInput = DOMSelectors.input.value.toLowerCase().replace(' ', '-')
+    }
+    let URL = `https://pokeapi.co/api/v2/pokemon/${pokemonInput}`
+    let URL1 = `https://pokeapi.co/api/v2/pokemon-species/${pokemonInput}`
     console.log(URL1)
     console.log(URL);
     inject(URL, URL1)
