@@ -48,9 +48,8 @@
 
 }
 
-body {
-  background-color: var(--main);
-  color: var(--accent);
+#pokeimage {
+  padding: 10px;
 }
 
 button {
