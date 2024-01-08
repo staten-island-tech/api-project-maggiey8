@@ -112,12 +112,12 @@ async function inject(URL, URL1) {
         const second = document.getElementById('secondary')
         second.style.backgroundColor = null
         second.style.color = null
-        second.textContent = 'Secondary'
+        second.textContent = 'Click'
 
         const accent = document.getElementById('accent')
         accent.style.backgroundColor = null
         accent.style.color = null
-        accent.textContent = 'Accent'
+        accent.textContent = 'Click'
     }
 
     function clearFields() {
