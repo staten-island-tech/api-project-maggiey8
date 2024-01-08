@@ -33,8 +33,8 @@ async function inject(URL, URL1) {
     let response1 = await fetch(URL1);
     let data1 = await response1.json();     
     document.querySelector('.container').insertAdjacentHTML(
-        'beforeend', `<div class="gallery"><h2>${data.species.name}</h2><img id='pokeimage' src='${data.sprites.front_default}' alt='${data.species.name}'></img></div>`
-    )
+        'beforeend', `<div class="gallery"><img id='pokeimage' src='${data.sprites.front_default}' alt='${data.species.name}'></img></div>`
+    )   // <h2>${data.species.name}</h2>
     applyTheme(data1)
 /*     getRGB(data) */
     } catch (error) {
