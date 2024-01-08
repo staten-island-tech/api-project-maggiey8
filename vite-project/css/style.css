@@ -4,48 +4,51 @@
   --black: rgb(0, 0, 0);
   --blue: rgb(109, 170, 248);
   --brown: rgb(245, 167, 79);
+  --green: rgb(136, 255, 136);
+  --pink: rgb(255, 176, 216);
+  --purple: rgb(194, 89, 255);
+  --red: rgb(235, 45, 45);
+  --yellow: rgb(255, 213, 98);
 }
 
 .black {
   --main: var(--black);
-  --second: var(--gray);
-  --accent: var(--white);
 }
 
 .blue {
-  --main:var(--blue)
+  --main: var(--blue)
 }
 
 .brown {
-  --main:var(--brown)
+  --main: var(--brown)
 }
 
 .gray {
-  --main:var(--gray)
+  --main: var(--gray)
 }
 
 .green {
-
+  --main: var(--green)
 }
 
 .pink {
-
+  --main: var(--pink)
 }
 
 .purple {
-
+  --main: var(--purple)
 }
 
 .red {
-
+  --main: var(--red)
 }
 
 .white {
-
+  --main: var(--white)
 }
 
 .yellow {
-
+  --main: var(--yellow)
 }
 
 #pokeimage {
