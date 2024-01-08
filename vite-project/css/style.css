@@ -26,6 +26,7 @@
 
 .gray {
   --main: var(--gray)
+  --second: var(--white)
 }
 
 .green {
