@@ -4,25 +4,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 <body class="white">
     <h1>Pokémon Color Palettes</h1>
-    <div class="main">
+    <div class="top">
         <div class="search">
-            <label for="input">Search for a Pokémon</label>
+            <label for="input">Search for a Pokémon </label>
             <input type="text" value="" id="input"></input>
             <input type="submit" id="submit" value="Submit"></input>
         </div>
         <div class="container"></div>
-        <div class="color-button">
-            <h3>Color based on PokeAPI:</h3>
-            <button class='button' id="main">Main</button>
-            <button class='button' id="secondary">Click</button>
-            <button class='button' id="accent">Click</button>
+    </div>
+    <div class="color-button">
+        <h3>Color based on PokeAPI:</h3>
+        <button class='button' id="main">Main</button>
+        <button class='button' id="secondary">Click</button>
+        <button class='button' id="accent">Click</button>
+        <div id="info">
             <h4>The colors based on the API are not 100% accurate -- Colorpick directly from the sprite to get the desired color palette.</h4>
             <p>**The EyeDropper API currently only works on Chrome, Edge, and Opera</p>
         </div>
+        
     </div>
 </body>
 <script type= "module" src="./js/main.js"></script>

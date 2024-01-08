@@ -35,6 +35,7 @@ async function inject(URL, URL1) {
     document.querySelector('.container').insertAdjacentHTML(
         'beforeend', `<div class="gallery"><img id='pokeimage' src='${data.sprites.front_default}' alt='${data.species.name}'></img></div>`
     )   // <h2>${data.species.name}</h2>
+    resetColors()
     applyTheme(data1)
 /*     getRGB(data) */
     } catch (error) {
@@ -101,6 +102,23 @@ async function inject(URL, URL1) {
     }
 
     randomOnLoad()
+
+    function resetColors() {
+        const main = document.getElementById('main')
+        main.style.backgroundColor = null
+        main.style.color = null
+        main.textContent = 'Main'
+
+        const second = document.getElementById('secondary')
+        second.style.backgroundColor = null
+        second.style.color = null
+        second.textContent = 'Secondary'
+
+        const accent = document.getElementById('accent')
+        accent.style.backgroundColor = null
+        accent.style.color = null
+        accent.textContent = 'Accent'
+    }
 
     function clearFields() {
         DOMSelectors.input.value = ''

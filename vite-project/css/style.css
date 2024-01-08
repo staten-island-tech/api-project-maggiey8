@@ -62,10 +62,6 @@ button {
   width: 100px;
 }
 
-.color-button {
-  padding: 10px;
-}
-
 #main {
   background-color: var(--main);
   color: var(--second);
@@ -77,4 +73,22 @@ button {
 
 #accent {
   background-color: var(--accent);
+}
+
+h1 {
+  text-align: center;
+}
+
+.top {
+  margin: 5vw;
+  text-align: center;
+}
+
+.color-button {
+  text-align: center;
+  padding: 10px;
+}
+
+.gallery {
+  margin-top: 60px;
 }
