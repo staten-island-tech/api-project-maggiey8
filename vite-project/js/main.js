@@ -68,8 +68,8 @@ async function inject(URL, URL1) {
     }
     //nidoran genders
     else if (pokemonInput === 'nidoran') {
-        DOMSelectors.input.value = 'Please specify Nidoran M or Nidoran F'
-
+        let pokemonInput = 'nidoran-m'
+        return pokemonInput
     }
     else {
         return pokemonInput
@@ -105,7 +105,6 @@ async function inject(URL, URL1) {
     function clearFields() {
         DOMSelectors.input.value = ''
         DOMSelectors.input.style.backgroundColor = '#ffffff'
-        DOMSelectors.getElementById('main').textContent = 'Main'
     }
 
 //how do i combine these 2 :(
