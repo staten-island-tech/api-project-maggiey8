@@ -20,7 +20,7 @@ function applyTheme(arr) {
     img.alt = `${arr.species.name}`
     console.log(img.src)
     let rgb = ctx.getImageData(0, 0, img.width, img.height);
-    console.log(rgb)
+    ctx.putImageData(rgb, 0, 0)
 } */
 
 async function inject(URL, URL1) {
@@ -28,12 +28,12 @@ async function inject(URL, URL1) {
     let response = await fetch(URL);
     let data = await response.json();
     if (data.sprites.front_default === null) {
-        DOMSelectors.input.value = ("No image available")
+        DOMSelectors.input.value = ("Image not available")
     }
     let response1 = await fetch(URL1);
     let data1 = await response1.json();     
     document.querySelector('.container').insertAdjacentHTML(
-        'beforeend', `<div class="gallery"><img id='pokeimage' src='${data.sprites.front_default}' alt='${data.species.name}'></img><h2>${data1.color.name}</h2></div>`
+        'beforeend', `<div class="gallery"><h2>${data.species.name}</h2><img id='pokeimage' src='${data.sprites.front_default}' alt='${data.species.name}'></img><h2>${data1.color.name}</h2></div>`
     )
     applyTheme(data1)
 /*     getRGB(data) */
@@ -44,13 +44,41 @@ async function inject(URL, URL1) {
     }  
     }
     
-    function URLget() {
+    //special cases
+    function inputChange() {
     const pokemonInput = DOMSelectors.input.value.toLowerCase()
-    if (pokemonInput.includes(' ')) {
-        let pokemonInput = DOMSelectors.input.value.toLowerCase().replace(' ', '-')
+    //mr. mime, mr.mime / mr.rime, mr.rime
+    if (pokemonInput.includes('. ')) {
+        let pokemonInput = DOMSelectors.input.value.toLowerCase().replace('. ', '-')
+        return pokemonInput
     }
-    let URL = `https://pokeapi.co/api/v2/pokemon/${pokemonInput}`
-    let URL1 = `https://pokeapi.co/api/v2/pokemon-species/${pokemonInput}`
+    else if (pokemonInput.includes('.')) {
+        let pokemonInput = DOMSelectors.input.value.toLowerCase().replace('.', '-')
+        return pokemonInput
+    }
+    //space in name
+    else if (pokemonInput.includes(' ')) {
+        let pokemonInput = DOMSelectors.input.value.toLowerCase().replace(' ', '-')
+        return pokemonInput
+    }
+    //farfetch'd, sirfetch'd
+    else if (pokemonInput.includes(`'`)) {
+        let pokemonInput = DOMSelectors.input.value.toLowerCase().replace(`'`, '')
+        return pokemonInput
+    }
+    //nidoran genders
+    else if (pokemonInput === 'nidoran') {
+        DOMSelectors.input.value = 'Please specify Nidoran M or Nidoran F'
+
+    }
+    else {
+        return pokemonInput
+    }
+    }
+
+    function URLget() {
+    let URL = `https://pokeapi.co/api/v2/pokemon/${inputChange()}`
+    let URL1 = `https://pokeapi.co/api/v2/pokemon-species/${inputChange()}`
     console.log(URL1)
     console.log(URL);
     inject(URL, URL1)
@@ -62,6 +90,14 @@ async function inject(URL, URL1) {
         let URL = `https://pokeapi.co/api/v2/pokemon/${randomNum}`
         let URL1 = `https://pokeapi.co/api/v2/pokemon-species/${randomNum}`
         inject(URL, URL1)
+        let button = document.querySelectorAll('button')
+/*         let buttonColor = String(button.style.backgroundColor)
+        if ((hexToRgb().r*0.299 + hexToRgb(result.sRGBHex).g*0.587 + hexToRgb(result.sRGBHex).b*0.114) < 150) {
+            button.style.color = '#ffffff'
+        }
+        else {
+            button.style.color = '#000000'
+        } */
     }
 
     randomOnLoad()
@@ -69,6 +105,7 @@ async function inject(URL, URL1) {
     function clearFields() {
         DOMSelectors.input.value = ''
         DOMSelectors.input.style.backgroundColor = '#ffffff'
+        DOMSelectors.getElementById('main').textContent = 'Main'
     }
 
 //how do i combine these 2 :(
