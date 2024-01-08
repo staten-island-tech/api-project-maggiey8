@@ -13,6 +13,7 @@
 
 .black {
   --main: var(--black);
+  --second: var(--white)
 }
 
 .blue {
@@ -66,6 +67,7 @@ button {
 
 #main {
   background-color: var(--main);
+  color: var(--second);
 }
 
 #secondary {
